@@ -27,17 +27,17 @@ A comprehensive banking solution built with modern web technologies. This applic
 
 ### Backend
 
-- **Node.js**
-- **Express.js**
-- **Prisma ORM**
-- **SQLite**
-- **TypeScript**
-- **JWT Authentication**
+- Node.js
+- Express.js
+- Prisma ORM
+- SQLite
+- TypeScript
+- JWT Authentication
 
 ### Frontend
 
-- **React.js**
-- **Tailwind CSS**
+- React.js
+- Tailwind CSS
 
 ## API Endpoints
 
