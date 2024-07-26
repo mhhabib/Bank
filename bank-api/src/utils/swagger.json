@@ -1,0 +1,168 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Bank API",
+		"version": "1.0.0",
+		"description": "API documentation for the Bank application"
+	},
+	"paths": {
+		"/users/register": {
+			"post": {
+				"summary": "Register a new user",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserRegister"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "User registered successfully"
+					},
+					"400": {
+						"description": "Invalid input"
+					}
+				}
+			}
+		},
+		"/users/login": {
+			"post": {
+				"summary": "Login a user",
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserLogin"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "User logged in successfully"
+					},
+					"401": {
+						"description": "Invalid credentials"
+					}
+				}
+			}
+		},
+		"/users/me": {
+			"get": {
+				"summary": "Get user information",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "User information retrieved successfully"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				}
+			}
+		},
+		"/accounts": {
+			"post": {
+				"summary": "Create a new account",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AccountCreation"
+							}
+						}
+					}
+				},
+				"responses": {
+					"201": {
+						"description": "Account created successfully"
+					},
+					"400": {
+						"description": "Invalid input"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				}
+			},
+			"get": {
+				"summary": "Get accounts for the logged-in user",
+				"security": [
+					{
+						"bearerAuth": []
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Accounts retrieved successfully"
+					},
+					"401": {
+						"description": "Unauthorized"
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"UserRegister": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					}
+				}
+			},
+			"UserLogin": {
+				"type": "object",
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				}
+			},
+			"AccountCreation": {
+				"type": "object",
+				"properties": {
+					"initialDeposit": {
+						"type": "number"
+					}
+				}
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	}
+}
