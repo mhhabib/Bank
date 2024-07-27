@@ -13,8 +13,7 @@ A comprehensive banking solution built with modern web technologies. This applic
   - [Installation](#installation)
   - [Running the Application](#running-the-application)
 - [Usage](#usage)
-- [License](#license)
-- [Contributing](#contributing)
+
 
 ## Features
 
